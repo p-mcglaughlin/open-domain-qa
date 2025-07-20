@@ -1,0 +1,43 @@
+.questionArea {
+  text-align: center;
+}
+
+.textInput {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  resize: none;
+}
+
+.answer {
+  transition: transform 0.3s ease-in-out;
+}
+
+.answer:hover {
+  transform: scale(1.01);
+}
+
+.expand_button {
+  border-radius: 10px;
+  background-color: white;
+}
+
+li {
+  margin-bottom: 10px; /* Adjust value as needed */
+}
+
+.dropdown-trigger {
+  background-color: white;
+}
+
+.dropdown-menu {
+  margin-bottom: 2px;
+}
+
+.no-bullets {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
