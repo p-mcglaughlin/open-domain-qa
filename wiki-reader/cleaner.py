@@ -1,8 +1,12 @@
 import re
 
 class Cleaner:
-    # stop words to remove
-    _to_remove_from_tags = {'in', 'on', 'at', 'to', 'of', 'from', 'into', 'through', 'by', 'like', 'for', 'and', 'the', 'a', 'an'}
+    '''
+    Extracts text from raw xml Wikipedia dump file. 
+    '''
+    
+    # stop words to remove from 
+    _to_remove_from_tags = {'in', 'on', 'at', 'to', 'of', 'from', 'into', 'by', 'for', 'and', 'the', 'a', 'an'}
 
     # left right pairs of files, citations, Wikitext markup, etc. to need to be removed
     bracket_pairs = {'{{': '}}', '[[': ']]', '<!': '!>'}
