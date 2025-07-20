@@ -1,8 +1,10 @@
 import re
 
 class Cleaner:
+    # stop words to remove
     _to_remove_from_tags = {'in', 'on', 'at', 'to', 'of', 'from', 'into', 'through', 'by', 'like', 'for', 'and', 'the', 'a', 'an'}
-    
+
+    # left right pairs of files, citations, Wikitext markup, etc. to need to be removed
     bracket_pairs = {'{{': '}}', '[[': ']]', '<!': '!>'}
 
     def __init__(self, ):
@@ -53,10 +55,7 @@ class Cleaner:
             j = match_text.find('|', i)
             match_text = match_text[:i] + match_text[j+1:-2]
         match_text = match_text.replace('=', '').replace('\n',' ').replace(',', '').replace("'","").lower()
-        #return match_text
-        #tags = set(word for word in match_text.split() if word not in Cleaner._to_remove_from_tags)
         out = ["##tags:"]
-        #out.extend(tags)
         out.append(match_text)
         out.append('\n\n')
         return ' '.join(out)
@@ -133,7 +132,6 @@ class Cleaner:
         return self.lexer_regex.sub(lambda x: " "+x.group()+" ", text)
     
     def finalize(self, text: str) -> str:
-        #text = re.sub(r"({{|}}|\||\t{2, }|\(\s*\))", ' ', text)
         text = re.sub(r"({{|}}|\||\t{2, }|\(\s*\)|\(\s*;\s*\)|\s*;\s*)", ' ', text)
         text = re.sub(r" +", " ", text)
         text = re.sub(r"\n{3,}", "\n\n", text)
@@ -144,7 +142,7 @@ class Cleaner:
         text = self.remove_references_section(text)
         text = self.cleanup_links(text)
         text = self.remove_non_nested_elements(text)
-        # must remove non nested elements because some section headings contain html and other styling
+        # must remove non nested elements first because some section headings contain html and other styling
         text = self.generate_section_tags(text)
         text = self.tokenize(text)
         text = self.remove_nested_elements(text)
