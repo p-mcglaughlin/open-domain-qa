@@ -1,7 +1,6 @@
 from page import Page
 from cleaner import Cleaner
-import bz2
-import urllib
+import bz2, urllib
 import xml.etree.ElementTree as ET
 
 class WikiReader:
@@ -14,16 +13,37 @@ class WikiReader:
                  read_block_size: int=622144,
                  cleaner: 'Cleaner'=None
         ):
+        '''
+        Inputs:
+            - page_xml_file_path: bz2 compressed multistream file of xml pages.
+            - stream_offsets_file_path: .txt file containing unique file offset sorted in increasing order, 
+                generate with _create_stream_offsets
+            - read_block_size: file is blocks of read_block size bytes
+            - cleaner: text cleaner to apply to text, if None returns raw xml files
+        '''
         self.page_xml_file_path = page_xml_file_path
         self.stream_offsets = WikiReader._get_stream_offsets(stream_offsets_file_path)
         self.read_block_size = read_block_size
         self.cleaner = cleaner
     
     def _get_raw_text(self, stream_offset: int) -> str:
+        '''
+        extracts xml files from the bz2 compressed file starting at stream_offset
+        returns xml element tree of the form:
+            <data>
+                <page>
+                    page data
+                </page>
+                ...
+                <page>
+                    page data
+                </page>
+            </data>
+        '''
         with open(self.page_xml_file_path, 'rb') as f:
             unzipper = bz2.BZ2Decompressor()
             f.seek(stream_offset)
-            raw_text = ['<data>']
+            raw_text = ['<data>'] # wrap individual pages to make valid xml element tree
             EOF = False  # just read entire stream = 100 articles (<5 MB of text)
             while not EOF:
                 try:
@@ -49,7 +69,7 @@ class WikiReader:
     
     def _convert_raw_text_to_pages(self, raw_text: str) -> list['Page']:
         '''
-        convert article from xml to cleaned text 
+        convert articles from xml to cleaned text 
         '''
         root = ET.fromstring(raw_text)  # xml element tree
         pages = []
@@ -82,16 +102,27 @@ class WikiReader:
     
     @classmethod
     def _get_stream_offsets(cls, stream_offsets_file_path: str) -> list[int]:
+        '''
+        loads precomputed file offsets from stream_offsets_file_path
+        '''
         with open(stream_offsets_file_path, 'r') as f:
             stream_offsets = [int(x) for x in f.read().split('\n') if len(x) > 0]
             return stream_offsets
     
     @classmethod
-    def create_stream_offsets(cls, index_read_path: str, write_path: str) -> None:
+    def _create_stream_offsets(cls, index_read_path: str, write_path: str) -> None:
+        '''
+        extracts stream (file) offsets from the index file index_read_path
+        writes the offsets as .txt file to write_path
+        '''
+        # index file consists of lines of the form:
+        #       offset:page-id:page-title
+        # we just want to get the sorted list of unique offsets
         with open(index_read_path, 'rb') as f:
             unzipper = bz2.BZ2Decompressor()
             data = f.read()
             data = unzipper.decompress(data).decode('utf-8')
+            # d has the form- offset:page-id:page-title
             indexs = [int(d.split(':')[0]) for d in data.split('\n') if len(d) > 0]
             index_set = list(sorted(set(indexs)))
             
@@ -101,6 +132,11 @@ class WikiReader:
     
     @classmethod
     def from_urls(cls, stream_index_url: str, stream_xml_url: str, write_location: str='./data') -> 'WikiReader':
+        '''
+        downloads index and xml files from: stream_index_url and stream_xml_url, respectively
+        writes the data into {write_location}/xml_stream.bz2 and {write_location/index.bz2
+        returns WikiReader object that can be used to extract cleaned text
+        '''
         stream_path = f'{write_location}/xml_stream.bz2'
         index_path = f'{write_location}/index.bz2'
         offsets_path = f'{write_location}/offsets.txt'
@@ -110,7 +146,7 @@ class WikiReader:
         except Exception as e:
             print('error: ', e)
         
-        WikiReader.create_stream_offsets(index_path, offsets_path)
+        WikiReader._create_stream_offsets(index_path, offsets_path)
         reader = WikiReader(stream_path, offsets_path, cleaner = Cleaner())
         return reader      
     
