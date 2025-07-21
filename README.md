@@ -69,4 +69,4 @@ TF-IDF provides a simple and interpretable approach to IR. However, these method
 
 # Question Answering Models
 
-# Evaluation and Benchmarks
+# Performance and Benchmarks
