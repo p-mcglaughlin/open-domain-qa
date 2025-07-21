@@ -69,9 +69,22 @@ $$idf(t) = \log\bigg(\frac{N}{n(t)}\bigg).$$
 This project uses [OpenSearch](https://opensearch.org/) to implement BM25 based full-text search. Each Wikipedia article is split into paragraphs, and indexed using the [English analyzer](https://docs.opensearch.org/docs/latest/analyzers/language-analyzers/english/) which removes stop words and performs stemming. User queries are not stemmed since it produces unusual results, see [TF-IDF wiki](wiki/TF-IDF_BM25) for more details and examples.
 
 ## Embedding Models
-TF-IDF provides a simple and interpretable approach to IR. However, these methods do not 'understand' the user's query, see [TF-IDF wiki](wiki/TF-IDF_BM25) a detailed discussion. Embedding based approaches aim to address this issue by using machine learning models to encode a text passage's semantic information into a vector (essentially a list of numbers). We can imagine these vectors (or embeddings) as points in some abstract space where similar passages of text are 'close' to each other. To use embeddings for IR, we compute the query's embedding and search for the closests points, see the  for an illustration. Algorithms for nearest neighbor search are outlined [here](wiki/Approximate-Nearest-Neighbors).
+TF-IDF provides a simple and interpretable approach to IR. However, these methods do not 'understand' the user's query, see [TF-IDF wiki](wiki/TF-IDF_BM25) a detailed discussion. Embedding based approaches aim to address this issue by using machine learning models to encode a text passage's semantic information into a vector (essentially a list of numbers). We can imagine these vectors (or embeddings) as points in some abstract space where similar passages of text are 'close' to each other. To use embeddings for IR, we compute the query's embedding and search for the closests points, see the illustration below. Algorithms for nearest neighbor search are outlined [here](wiki/Approximate-Nearest-Neighbors).
 
 <img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/embedding_example.png" width=50% height=50%>
+
+The three most common measures of distance or similarity between embeddings $x$ and $y$ are:
+- $L^2$:
+
+$$\lvert x-y \rvert^2 = \sum_i (x_i-y_i)^2$$
+
+- dot product:
+
+$$ \langle x,y \rangle = \sum_i x_iy_i$$
+
+- cosine:
+
+$$ \frac{\langle x, y \rangle}{\lvert x\rvert \lvert y \rvert}$$
 
 # Question Answering Models
 
