@@ -74,11 +74,11 @@ TF-IDF provides a simple and interpretable approach to IR. However, these method
 <img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/embedding_example.png" width=50% height=50%>
 
 The three most common measures of distance or similarity between embeddings $x$ and $y$ are:
-- $L^2$: $\Lvert x-y \Rvert^2 = \sum_i (x_i-y_i)^2$
+- $L^2$: $\lvert \lvert x-y \rvert \rvert^2 = \sum_i (x_i-y_i)^2$
 
 - dot product: $ \langle x,y \rangle = \sum_i x_iy_i$
 
-- cosine: $ \frac{\langle x, y \rangle}{\Lvert x\Rvert \Lvert y \Rvert}$
+- cosine: $ \frac{\langle x, y \rangle}{\lvert\lvert x\rvert\rvert \lvert\lvert y \rvert\rvert}$
 
 This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Tests were conducted using [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) model for the following reasons: low memory requirements, low latency on CPU, and the training data includes many (~70 million) qa pairs where answers are passages of Wikipedia text. When using the all-MiniLM-L6-v2 model, we used cosine similarity since that loss was used in training. We use vector databases to implement nearest neighbor search. (Link) provides clients for: Qdrant, Redis vector sets, OpenSearch, and pg_vector. Extending the (class.py) class is to support other vector database providers is straightforward.
 
