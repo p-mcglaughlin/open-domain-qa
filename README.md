@@ -2,6 +2,7 @@
 This document outlines the steps to build a fast, accurate, and cheap (to build and run) open-domain question answering system that uses Wikipedia articles to answer user queries. Project code is modular to make swapping different document retrieval and processing methods easy. The underlying framework, particularly the retrieval component, can be used with minimal modification for other applications: retrieval augmented generation (RAG) to provide accurate information sources for chatbots, or providing recommendations based on product descriptions and user reviews. An overview of project follows. 
 
 -[Open-Domain Question Answering](#open-domain-question-answering)
+
 -[Data Source: Wikipedia](#data-source-wikipedia)
 -[Finding Relevant Documents](#finding-relevant-documents)
   -[Keyword Matching](#keyword-matching)
