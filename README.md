@@ -46,7 +46,7 @@ Fast and accurate information retrieval methods lie at heart of the open-domain 
 1. Classical IR methods based on keyword matching.
 2. Machine learning based vector embeddings.
 
-See the wiki for a more detailed explaination of [keyword matching](/wiki/TF-IDF_BM25) and [vector embeddings](/wiki/Embeddings) approaches. The [approximate nearest neighbors](/wiki/Approximate-Nearest-Neighbors) page outlines finding nearest neighbors in high dimensional spaces required for embedding based methods. For a comparison of QA system performance see [Performance and Benchmarks](#performance-and-benchmarks).
+See the wiki for a more detailed explaination of [keyword matching](https://github.com/p-mcglaughlin/open-domain-qa/wiki/TF%E2%80%90IDF_BM25) and [vector embeddings]([/wiki/Embeddings](https://github.com/p-mcglaughlin/open-domain-qa/wiki/Embeddings)) approaches. The [approximate nearest neighbors]([/wiki/Approximate-Nearest-Neighbors](https://github.com/p-mcglaughlin/open-domain-qa/wiki/Approximate-Nearest-Neighbors)) page outlines finding nearest neighbors in high dimensional spaces required for embedding based methods. For a comparison of QA system performance see [Performance and Benchmarks](#performance-and-benchmarks).
 
 *Note:* Sparse encoder methods like SPLADE are an interesting extension for future work.
 
