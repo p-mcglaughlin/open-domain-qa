@@ -1,8 +1,6 @@
 # open-domain-qa
 This document outlines the steps to build a fast, accurate, and cheap (to build and run) open-domain question answering system that uses Wikipedia articles to answer user queries. Project code is modular to make swapping different document retrieval and processing methods easy. The underlying framework, particularly the retrieval component, can be used with minimal modification for other applications: retrieval augmented generation (RAG) to provide accurate information sources for chatbots, or providing recommendations based on product descriptions and user reviews. An overview of project follows. 
 
-$$x=1$$
-
 - [Open-Domain Question Answering](#open-domain-question-answering)
 - [Data Source: Wikipedia](#data-source-wikipedia)
 - [Finding Relevant Documents](#finding-relevant-documents)
@@ -56,9 +54,15 @@ Classical IR techniques rely on keyword matching. Intuitively, we find documents
 
 Term frequency - inverse document frequency ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) heuristic provides a way to weight the importance of matching keywords. The weight for term $t$ in document $d$ is given by:
 - **Term frequency** -
-  $$tf(t,d) = \text{ number of times } t \text{ occurs in } d.$$ 
-- **Inverse document frequency** - A weighting factor that increases with the rarity of term $t$ across all documents. Let $N$ be the number of documents, and $n(t)$ be the number documents that contain $t$. The inverse document frequency is: $$idf(t) = \log\bigg(\frac{N}{n(t)}\bigg).$$
-- **Term Weight** - $$tf(t,d)\times idf(t).$$
+  
+$$tf(t,d) = \text{ number of times } t \text{ occurs in } d.$$ 
+
+- **Inverse document frequency** - A weighting factor that increases with the rarity of term $t$ across all documents. Let $N$ be the number of documents, and $n(t)$ be the number documents that contain $t$. The inverse document frequency is:
+
+$$idf(t) = \log\bigg(\frac{N}{n(t)}\bigg).$$
+- **Term Weight**
+
+$$tf(t,d)\times idf(t).$$
 
 *Note:* TF-IDF is really more a family of algorithms with many [variations](https://nlp.stanford.edu/IR-book/html/htmledition/variant-tf-idf-functions-1.html) on the exact form of $tf$ and $idf$. The most famous of these is BM25 (BM stands for best matching). For a detailed discussion of the BM25 formula see [here](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables).
 
