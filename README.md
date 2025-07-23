@@ -80,7 +80,7 @@ The three most common measures of distance or similarity between embeddings $x$ 
 
 - cosine: $ \frac{\langle x, y \rangle}{||x|| ||y||}$
 
-This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Tests were conducted using [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) model for the following reasons: low memory requirements, low latency on CPU, and the training data includes many (~70 million) qa pairs where answers are passages of Wikipedia text. When using the all-MiniLM-L6-v2 model, we used cosine similarity since that loss was used in training. We use vector databases to implement nearest neighbor search. (Link) provides clients for: Qdrant, Redis vector sets, OpenSearch, and pg_vector. Extending the (class.py) class is to support other vector database providers is straightforward.
+This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Tests were conducted using [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model since it provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
 
 # Question Answering Models
 
