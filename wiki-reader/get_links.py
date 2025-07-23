@@ -47,13 +47,6 @@ if __name__ == "__main__":
     # comment out the above and uncomment below to urls for 1 pair of (very large) files instead
     # xml_links, index_links = xml_links[0], index_links[0]
     
-    mismatch = []
-    for i in range(1, len(xml_links)):
-        j = xml_links[i].rfind('-')
-        k = index_links[i].rfind('-')
-        if xml_links[i][j:] != index_links[i][k:]:
-            mismatch.append(i)
-    
     save_links(xml_links, xml_path)
     save_links(index_links, index_path)
         
