@@ -79,6 +79,7 @@ The three most common measures of distance or similarity between embeddings $x$ 
 - dot product: $< x,y > \ = \sum_i x_iy_i $
 
 - cosine:
+
 $$\frac{<x,y>}{ \|\|x\|\| \|\|y\|\| }$$.
 
 This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Tests were conducted using [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model since it provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
