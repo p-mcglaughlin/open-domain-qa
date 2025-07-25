@@ -86,10 +86,13 @@ The three most common measures of distance or similarity between embeddings $x$ 
 
 - cosine: $\frac{<x,y>}{\lVert x \rVert \lVert y \rVert }.$
 
-This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models available. Tests were conducted using [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model which provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. We used cosine similarity in tests since that is how the snowflake-arctic-embed-s model was trained. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
+This project relies on [Sentence Transformers](https://sbert.net/) for embedding models. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models available. Tests were conducted using [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model which provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. We used cosine similarity in tests since that is how the snowflake-arctic-embed-s model was trained. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
 
 # Question Answering Models
 QA systems have a long history in NLP research. One of the most common settings is reading comprehension; answer questions about a passage of text (called the context). In the simplest versions, the answer is a substring of the context.
-> Question: Who 
+> Question: Where did the Beatles form?
+> Context: The Beatles were an English rock band that formed in **Liverpool** in 1960.
+
+Extractive QA models solve reading comprehension tasks by selecting a substring of the context as the answer (as in the example above).
 
 # Performance and Benchmarks
