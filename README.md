@@ -91,11 +91,14 @@ The three most common measures of distance or similarity between embeddings $x$ 
 This project relies on [Sentence Transformers](https://sbert.net/) for embedding models. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models available. Tests were conducted using the [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model which provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. We used cosine similarity in tests since that is how the model was trained. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
 
 # Question Answering Models
-QA systems have a long history in NLP research. One of the most common settings is reading comprehension; answer questions about a passage of text (called the context). Extractive QA models solve these tasks by selecting a substring of the context as the answer. For example:
+QA systems have a long history in NLP research. One of the most common settings is reading comprehension: answer questions about a passage of text (called the context). Extractive QA models solve these tasks by selecting a substring of the context as the answer. For example:
 > Question: Where did the Beatles form?
 
-> Context: The Beatles were an English rock band that formed in **Liverpool** in 1960.
+> Context: The Beatles were an English rock band that formed in ***Liverpool*** in 1960.
 
-Extractive QA models solve reading comprehension tasks by selecting a substring of the context as the answer (as in the example above).
+Extractive QA models work by outputting two to probability distributions, one for the start and the end of the answer span. For each index $i$ in the context, let $p_{start}(i)$ and $p_{end}(i)$ be the respectively probability distributions. Then, the model selects the span corresponding to the pair of indexes $i \leq j$ maximizing: $p_{start}(i)\times p_{end}(j)$. Typically, one builds an extractive QA model by finetunning a pretrained model, like [BERT](https://arxiv.org/abs/1810.04805), on standard QA dataset. 
+
+<img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=40% height=40%>
+
 
 # Performance and Benchmarks
