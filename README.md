@@ -52,7 +52,7 @@ See the wiki for a more detailed explaination of [keyword matching](https://gith
 ## Keyword Matching
 Classical IR techniques rely on keyword matching. Intuitively, we find documents that frequently use the words appearing in a user's query, and give more weight (importance) to rarer words. 
 
-Term frequency - inverse document frequency ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) heuristic provides a way to weight the importance of matching keywords. The weight for term $t$ in document $d$ is given by:
+The term frequency - inverse document frequency ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) heuristic provides a way to weight the importance of matching keywords. The weight for term $t$ in document $d$ is given by:
 - **Term frequency** -
   
 $$tf(t,d) = \text{ number of times } t \text{ occurs in } d.$$ 
