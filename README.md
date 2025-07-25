@@ -10,7 +10,7 @@ This document outlines the steps to build a fast, accurate, and cheap (to build 
 - [Performance and Benchmarks](#performance-and-Benchmarks)
 
 # Open-Domain Question Answering
-Question answering (QA) systems attempt to answer factoid questions posed by a user in natural language.
+Question answering (QA) systems attempt to answer questions posed by a user in natural language.
 
 > Question: How many teeth do dogs have?
 
