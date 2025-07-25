@@ -98,7 +98,29 @@ QA systems have a long history in NLP research. One of the most common settings 
 
 Extractive QA models work by outputting two to probability distributions, one for the start and the end of the answer span. For each index $i$ in the context, let $p_{start}(i)$ and $p_{end}(i)$ be the respectively probability distributions. Then, the model selects the span corresponding to the pair of indexes $i \leq j$ maximizing: $p_{start}(i)\times p_{end}(j)$. Typically, one builds an extractive QA model by finetunning a pretrained model, like [BERT](https://arxiv.org/abs/1810.04805), on standard QA dataset. 
 
-<img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=40% height=40%>
-
+<p align='center'>
+<img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=30% height=30%>
+</p>
 
 # Performance and Benchmarks
+The following table shows the QA systems performance on the SQuAD dataset. Unlikey the original setting, there is no context provided. Instead, the system must retrieve relevant text passages to serve as the context. The table shows the exact match (EM) and F1 scores for various retrieval methods. BM25 is keyword matching and VEC is an embedding model. EM and F1 are calculated using first answer provided by the system, EM@5 and F1@5 are the best results in the top 5 answers. The +rerank entries used a reranking model.
+
+| Retrieval | EM | F1 | EM@5 | F1@5 |
+|-----------|----|----|------|------|
+| BM25 | 24.68 | 28.88 | 40.20 | 47.36 |
+| VEC | 22.81 | 28.04 | 40.37 | 48.65 |
+| BM25+rerank | 31.81 | 36.60 | 40.20 | 47.36 |
+| VEC+rerank | 29.74 | 35.04 | 40.37 | 48.65 |
+| BM25+VEC+rerank | 36.49 | 41.97 | 49.52 | 57.33 |
+
+
+
+
+
+
+
+
+
+
+
+
