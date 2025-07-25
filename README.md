@@ -12,7 +12,9 @@ This document outlines the steps to build a fast, accurate, and cheap (to build 
 # Open-Domain Question Answering
 Question answering (QA) systems attempt to answer factoid questions posed by a user in natural language.
 
-> Question: "How many teeth do dogs have?", Answer: "42".
+> Question: How many teeth do dogs have?
+
+> Answer: "42".
 
 QA requires a fairly nuanced understanding of language, and has a variety of practical uses: personal assistants like Siri, handling frequently asked questions in customer support, or providing instant answers in search engines.  This combination of difficult technical challenges and real world applications helped to make QA a staple of natural language processing (NLP) literature. 
 
@@ -91,6 +93,7 @@ This project relies on [Sentence Transformers](https://sbert.net/) for embedding
 # Question Answering Models
 QA systems have a long history in NLP research. One of the most common settings is reading comprehension; answer questions about a passage of text (called the context). In the simplest versions, the answer is a substring of the context.
 > Question: Where did the Beatles form?
+
 > Context: The Beatles were an English rock band that formed in **Liverpool** in 1960.
 
 Extractive QA models solve reading comprehension tasks by selecting a substring of the context as the answer (as in the example above).
