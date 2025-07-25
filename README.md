@@ -12,7 +12,7 @@ This document outlines the steps to build a fast, accurate, and cheap (to build 
 # Open-Domain Question Answering
 Question answering (QA) systems attempt to answer factoid questions posed by a user in natural language.
 
-> Question: How many :blue[teeth] do dogs have?
+> Question: How many <span style="color: red;">red text</span> do dogs have?
 
 > Answer: "42".
 
