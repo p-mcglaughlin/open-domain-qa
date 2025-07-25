@@ -80,7 +80,7 @@ TF-IDF provides a simple and interpretable approach to IR. However, these method
 </p>
 
 The three most common measures of distance or similarity between embeddings $x$ and $y$ are:
-- $L^2$: $\|\| x-y \|\|^2 = \sum_i (x_i-y_i)^2$
+- $L^2$: $\lVert x-y \|\|^2 = \sum_i (x_i-y_i)^2$
 
 - dot product: $< x,y > \ = \sum_i x_iy_i $
 
