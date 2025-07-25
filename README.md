@@ -80,15 +80,16 @@ TF-IDF provides a simple and interpretable approach to IR. However, these method
 </p>
 
 The three most common measures of distance or similarity between embeddings $x$ and $y$ are:
-- $L^2$: $\lVert x-y \|\|^2 = \sum_i (x_i-y_i)^2$
+- $L^2$: $\lVert x-y \rVert^2 = \sum_i (x_i-y_i)^2$
 
 - dot product: $< x,y > \ = \sum_i x_iy_i $
 
-- cosine: $\frac{<x,y>}{\|\|x\|\| \|\|y\|\| }.$
+- cosine: $\frac{<x,y>}{\lVert x \rVert \lVert y \rVert }.$
 
 This project relies on [Sentence-Transformers](https://sbert.net/) for embedding models. Refer to the [MTEB leaderboards](https://huggingface.co/spaces/mteb/leaderboard) for a comparison various models available. Tests were conducted using [Snowflake/snowflake-arctic-embed-s](https://huggingface.co/Snowflake/snowflake-arctic-embed-s) model which provides a good balance between inference speed, embedding size (memory requirements), and retrieval performance. We used cosine similarity in tests since that is how the snowflake-arctic-embed-s model was trained. We use vector databases to implement nearest neighbor search. Clients are provied for: [Qdrant](https://qdrant.tech/), [Redis vector sets](https://redis.io/docs/latest/develop/data-types/vector-sets/), [OpenSearch](https://opensearch.org/), and [pgvector](https://github.com/pgvector/pgvector). Extending the (class.py) class is to support other vector database providers is straightforward.
 
 # Question Answering Models
-QA systems have been a staple of NLP research for decades. One of the most common settings is reading comprehension (RC); answer questions about a given passage of text. Extractive QA systems were developed for RC tasks. These models select a substring of given text as the answer. 
+QA systems have a long history in NLP research. One of the most common settings is reading comprehension; answer questions about a passage of text (called the context). In the simplest versions, the answer is a substring of the context.
+> Question: Who 
 
 # Performance and Benchmarks
