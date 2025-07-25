@@ -26,7 +26,7 @@ Thus, the open-domain QA setting roughly separates into the following components
 3. (Optional) Reranking answers to incorporate document relevance, answer confidence, etc., for improved performance.
 
 # Data Source: Wikipedia
-Wikipedia articles serve as the QA system's knowledge base. The site regularly provides SQL and XML [database dumps](https://en.wikipedia.org/wiki/Wikipedia:Database_download) of the text of all ~7 million English Wikipedia articles. A typical file is ~25GB compressed or ~50GB uncompressed. The XML files contain html and [wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) markup, making them unsuitable for QA tasks. Code to download and clean Wikipedia dumps is provided in [wiki-reader](wiki-reader). 
+Wikipedia articles serve as the QA system's knowledge base. The site regularly provides SQL and XML [database dumps](https://en.wikipedia.org/wiki/Wikipedia:Database_download) containing the text of all ~7 million English Wikipedia articles. A typical file is ~25GB compressed or ~50GB uncompressed. The XML files use html and [wikitext](https://en.wikipedia.org/wiki/Help:Wikitext) markup, making them unsuitable for QA tasks. Code to download and clean Wikipedia dumps is provided in [wiki-reader](wiki-reader). 
 
 This project only extracted plain text. Specifically, we removed:
 - Citations, references, external links.
