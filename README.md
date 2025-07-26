@@ -38,7 +38,7 @@ This project only extracted plain text. Specifically, we removed:
 - Citations, references, external links.
 - 'Internal' Wikipedia pages like: Categories, Templates, Help, Special, etc.
 - Structured data like infoboxes, tables, and lists.
-- **All** markup, including inline math \$x=1\$, \<math\>, and \<code\> blocks. 
+- **All** markup, including \<math\> and \<code\> blocks. 
 
 In some cases, this removes valuable information. Some of the above items could be preserved, consult [wiki-reader documentation](wiki-reader/README.md) for details.
 
