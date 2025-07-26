@@ -1,20 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun May 11 23:18:52 2025
-
-@author: Pete
-"""
-
 from bs4 import BeautifulSoup
 import requests
 
-def save_links(links -> List[str], path: str):
+def save_links(links -> List[str], file_path: str):
     '''
     write the list of urls links to path
     '''
     f = '\n'.join(links)
-    with open(path, 'w') as f:
+    with open(file_path, 'w') as f:
         f.write(links)
 
 if __name__ == "__main__":
