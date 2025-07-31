@@ -96,7 +96,7 @@ QA systems have a long history in NLP research. One of the most common settings 
 
 > Context: The Beatles were an English rock band that formed in ***Liverpool*** in 1960.
 
-Extractive QA models work by outputting two to probability distributions, one for the start and one for the end of the answer span. Let $p_{start}$ and $p_{end}$ be the respectively probability distributions. Then, the model selects the span corresponding to the pair of indexes $i \leq j$ maximizing: $p_{start}(i)\times p_{end}(j)$. Typically, one builds an extractive QA model by fine-tuning a pretrained model, like [BERT](https://arxiv.org/abs/1810.04805), on standard QA dataset. 
+Extractive QA models work by outputting two to probability distributions over of tokens in the context paragrpah, one for the start of the answer span and one for the end. Let $p_{start}$ and $p_{end}$ be the respectively probability distributions. Then, the model selects the span corresponding to the pair of indexes $i \leq j$ maximizing: $p_{start}(i)\times p_{end}(j)$. Typically, one builds an extractive QA model by fine-tuning a pretrained model, like [BERT](https://arxiv.org/abs/1810.04805), on standard QA dataset. 
 
 <p align='center'>
 <img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=30% height=30%>
