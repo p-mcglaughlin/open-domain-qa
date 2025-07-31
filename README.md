@@ -103,7 +103,7 @@ Extractive QA models work by outputting two to probability distributions, one fo
 </p>
 
 # Performance and Benchmarks
-The following table shows the QA systems performance on the SQuAD dataset. Unlikey the original setting, there is no context provided. Instead, the system must retrieve relevant text passages to serve as the context. The table shows the exact match (EM) and F1 scores for various retrieval methods. BM25 is keyword matching and VEC is an embedding model. EM and F1 are calculated using first answer provided by the system, EM@5 and F1@5 are the best results in the top 5 answers. The +rerank entries used a reranking model.
+The following table shows the QA systems performance on the SQuAD dataset. Unlike the original setting, there is no context provided. Instead, the system must retrieve relevant text passages to serve as the context. The table shows the exact match (EM) and F1 scores for various retrieval methods. BM25 is keyword matching and VEC is an embedding model. EM and F1 are calculated using first answer provided by the system, EM@5 and F1@5 are the best results in the top 5 answers. The +rerank entries used a reranking model.
 
 | Retrieval | EM | F1 | EM@5 | F1@5 |
 |-----------|----|----|------|------|
