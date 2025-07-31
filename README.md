@@ -102,8 +102,22 @@ Extractive QA models work by outputting two to probability distributions over of
 <img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=30% height=30%>
 </p>
 
+The ODQA system uses an extractive QA model to obtain answers from relevant documents found by the IR system. Extractive QA models are rather simple compared to modern LLMs like ChatGPT that people are now accustomed to. This limits the system's ability to answer questions, even when provided with a context paragraph containing the correct answer. Consider the following examples:
+
+> Question: When was the last time the LA Dodgers won the World Series?
+
+> Context: In Brooklyn, the Dodgers won the NL pennant twelve times (1890, 1899, 1900, 1916, 1920, 1941, 1947, 1949, 1952, 1953, 1955, 1956) and the World Series in ***1955***. After moving to Los Angeles, the team won National League pennants in 1959, 1963, 1965, 1966, 1974, 1977, 1978, 1981, 1988, 2017, 2018, 2020 and 2024 with World Series championships in 1959, 1963, 1965, 1981, 1988, 2020 and 2024. In all, the Dodgers have appeared in 22 World Series: nine in Brooklyn and 13 in Los Angeles.
+
+> Extractive QA Answer: 1955 
+
+> Question: How many times have the Minnesota Twins won the World Series?
+
+> Context: The 1987 Minnesota Twins became the first team in the history of the World Series to win the championship by winning all ***4*** games they hosted when they defeated the St. Louis Cardinals. They repeated this 4 years later in 1991 when they defeated the Atlanta Braves.
+
+> Extractive QA Answer: 4
+
 # Performance and Benchmarks
-The following table shows the QA systems performance on the SQuAD dataset. Unlike the original setting, there is no context provided. Instead, the system must retrieve relevant text passages to serve as the context. The table shows the exact match (EM) and F1 scores for various retrieval methods. BM25 is keyword matching and VEC is an embedding model. EM and F1 are calculated using first answer provided by the system, EM@5 and F1@5 are the best results in the top 5 answers. The +rerank entries used a reranking model.
+The following table shows the QA systems performance on the SQuAD dataset. SQuaD is a reading comprehension dataset consisting of 100K   questions about 500 passages of text from Wikipedia.  Unlike the original setting, there is no context provided. Instead, the system must retrieve relevant text passages to serve as the context. The table shows the exact match (EM) and F1 scores for various retrieval methods. BM25 is keyword matching and VEC is an embedding model. EM and F1 are calculated using first answer provided by the system, EM@5 and F1@5 are the best results in the top 5 answers. The +rerank entries used a reranking model.
 
 | Retrieval | EM | F1 | EM@5 | F1@5 |
 |-----------|----|----|------|------|
