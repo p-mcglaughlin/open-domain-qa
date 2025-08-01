@@ -104,7 +104,7 @@ Extractive QA models work by outputting two to probability distributions over of
 <img src="https://github.com/p-mcglaughlin/open-domain-qa/blob/main/images/bert_qa.png" width=30% height=30%>
 </p>
 
-The ODQA system uses an extractive QA model to obtain answers from relevant documents found by the IR system. Extractive QA models are rather simple compared to modern LLMs like ChatGPT that people are now accustomed to. This limits the system's ability to answer questions, even when provided with a context paragraph containing the correct answer. For examples, refer to the [Extractive QA wiki](https://github.com/p-mcglaughlin/open-domain-qa/wiki/Extractive-QA). An alternative approach is to run the QA system as retrieval augemented generation (RAG), by feeding relevant documents found by the IR system in the prompt to an LLM.
+The ODQA system uses an extractive QA model to obtain answers from relevant documents found by the IR system. Extractive QA models are rather simple compared to modern LLMs like ChatGPT that people are now accustomed to. This limits the system's ability to answer questions, even when provided with a context paragraph containing the correct answer. For examples, refer to the [Extractive QA wiki](https://github.com/p-mcglaughlin/open-domain-qa/wiki/Extractive-QA). An alternative approach is to run the QA system as retrieval augemented generation (RAG), by feeding relevant documents found by the IR system into the prompt of an LLM.
 
 # Performance and Benchmarks
 The following table shows the QA systems performance on the SQuAD dataset. SQuaD is a reading comprehension dataset consisting of 100K   questions about 500 passages of text from Wikipedia. There are a few well-known issues with the dataset.
